@@ -1,14 +1,14 @@
-package com.tiger_miao.niceweather.com.tiger_miao.niceweather.activity;
+package com.tiger_miao.niceweather.activity;
 
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.inject.Inject;
 import com.tiger_miao.niceweather.R;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.tiger_miao.niceweather.model.IChooseAreaActivityViewModel;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
@@ -22,14 +22,18 @@ public class ChooseAreaActivity extends RoboActivity {
     @InjectView(R.id.title_text) private TextView titleText;
     @InjectView(R.id.list_view) private ListView listView;
 
+    @Inject
+    private IChooseAreaActivityViewModel viewModel;
+
     private ArrayAdapter<String> adapter;
-    private List<String> dataList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, viewModel.getDataList());
         listView.setAdapter(adapter);
     }
 }
