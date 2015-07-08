@@ -1,7 +1,9 @@
 package com.tiger_miao.niceweather.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,7 +19,6 @@ import roboguice.inject.InjectView;
 /**
  * Created by tiger_miao on 15-7-1.
  */
-@ContentView(R.layout.choose_area)
 public class ChooseAreaActivity extends RoboActivity {
     @InjectView(R.id.title_text) private TextView titleText;
     @InjectView(R.id.list_view) private ListView listView;
@@ -33,7 +34,15 @@ public class ChooseAreaActivity extends RoboActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        setContentView(R.layout.choose_area);
+
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, viewModel.getDataList());
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                titleText.setText(viewModel.getDataList().get(i));
+            }
+        });
     }
 }
