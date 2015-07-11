@@ -33,6 +33,14 @@ dependencies {
     compile 'org.roboguice:roboguice:3.+'
     provided 'org.roboguice:roboblender:3.+'
 
+    // required if you want to use Mockito for unit tests
+    testCompile 'org.mockito:mockito-core:1.+'
+
+    // required if you want to use Mockito for Android instrumentation tests
+    androidTestCompile 'org.mockito:mockito-core:1.+'
+    androidTestCompile "com.google.dexmaker:dexmaker:1.2"
+    androidTestCompile "com.google.dexmaker:dexmaker-mockito:1.2"
+
     // Testing-only dependencies
     androidTestCompile 'com.android.support.test:runner:0.3'
     androidTestCompile 'com.android.support.test:rules:0.3'

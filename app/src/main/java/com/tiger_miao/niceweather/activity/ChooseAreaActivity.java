@@ -13,18 +13,17 @@ import com.tiger_miao.niceweather.R;
 import com.tiger_miao.niceweather.model.IChooseAreaActivityViewModel;
 
 import roboguice.activity.RoboActivity;
-import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
 /**
  * Created by tiger_miao on 15-7-1.
  */
-public class ChooseAreaActivity extends RoboActivity {
+public class ChooseAreaActivity extends RoboActivity{
     @InjectView(R.id.title_text) private TextView titleText;
     @InjectView(R.id.list_view) private ListView listView;
 
     @Inject
-    private IChooseAreaActivityViewModel viewModel;
+    public IChooseAreaActivityViewModel viewModel;
 
     private ArrayAdapter<String> adapter;
 
@@ -35,6 +34,8 @@ public class ChooseAreaActivity extends RoboActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.choose_area);
+        titleText = (TextView) findViewById(R.id.title_text);
+        listView = (ListView) findViewById(R.id.list_view);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, viewModel.getDataList());
         listView.setAdapter(adapter);

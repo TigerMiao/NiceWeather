@@ -12,4 +12,5 @@ public class roboguiceModule extends AbstractModule {
     protected void configure() {
         bind(IChooseAreaActivityViewModel.class).to(ChooseAreaActivityViewModel.class);
     }
+
 }
