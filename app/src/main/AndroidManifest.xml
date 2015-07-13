@@ -10,11 +10,7 @@
 
         <meta-data
             android:name="roboguice.modules"
-            android:value="com.tiger_miao.niceweather.activity.roboguiceModule"/>
-
-        <!--<meta-data-->
-            <!--android:name="roboguice.modules"-->
-            <!--android:value="com.tiger_miao.niceweather.activity.MyTestModule"/>-->
+            android:value="com.tiger_miao.niceweather.activity.GuiceModule"/>
 
         <activity
             android:name=".activity.ChooseAreaActivity"

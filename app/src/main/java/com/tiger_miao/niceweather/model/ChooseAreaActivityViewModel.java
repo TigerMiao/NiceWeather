@@ -11,7 +11,7 @@ public class ChooseAreaActivityViewModel implements IChooseAreaActivityViewModel
     public List<String> getDataList() {
         List<String> dataList = new ArrayList<>();
 
-        dataList.add("山东");
+       /* dataList.add("山东");
         dataList.add("山西");
         dataList.add("河北");
         dataList.add("河南");
@@ -38,7 +38,7 @@ public class ChooseAreaActivityViewModel implements IChooseAreaActivityViewModel
         dataList.add("黑龙江");
         dataList.add("安徽");
         dataList.add("贵州");
-        dataList.add("宁夏");
+        dataList.add("宁夏");*/
 
         return dataList;
     }
