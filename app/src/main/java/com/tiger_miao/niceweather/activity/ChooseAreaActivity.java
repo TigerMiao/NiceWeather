@@ -34,6 +34,9 @@ public class ChooseAreaActivity extends RoboActivity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.choose_area);
+
+        viewModel.setAreaType(IChooseAreaActivityViewModel.TYPE_PROVINCE);
+
         titleText = (TextView) findViewById(R.id.title_text);
         listView = (ListView) findViewById(R.id.list_view);
 

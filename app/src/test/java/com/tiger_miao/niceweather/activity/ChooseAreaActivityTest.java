@@ -6,7 +6,10 @@ import android.widget.TextView;
 import com.google.inject.AbstractModule;
 import com.tiger_miao.niceweather.BuildConfig;
 import com.tiger_miao.niceweather.R;
-import com.tiger_miao.niceweather.model.IChooseAreaActivityViewModel;
+import com.tiger_miao.niceweather.model.City;
+import com.tiger_miao.niceweather.model.County;
+import com.tiger_miao.niceweather.model.IAreaDao;
+import com.tiger_miao.niceweather.model.Province;
 
 import org.junit.After;
 import org.junit.Before;
@@ -58,7 +61,7 @@ public class ChooseAreaActivityTest {
                 0,
                 listView.getAdapter().getItemId(0));
 
-        assertEquals("北京", titleText.getText().toString());
+        assertEquals("山东", titleText.getText().toString());
     }
 
     @Test
@@ -68,7 +71,7 @@ public class ChooseAreaActivityTest {
                 2,
                 listView.getAdapter().getItemId(2));
 
-        assertEquals("上海", titleText.getText().toString());
+        assertEquals("河北", titleText.getText().toString());
     }
 
     @After
@@ -77,7 +80,7 @@ public class ChooseAreaActivityTest {
         RoboGuice.Util.reset();
     }
 
-    public static class MyTestViewModel implements IChooseAreaActivityViewModel {
+    /*public static class MyTestViewModel implements IChooseAreaActivityViewModel {
         @Override
         public List<String> getDataList() {
             List<String> dataList = new ArrayList<>();
@@ -89,12 +92,62 @@ public class ChooseAreaActivityTest {
 
             return dataList;
         }
+
+        @Override
+        public void setAreaType(int areaType) {
+
+        }
+    }*/
+
+    public static class MyTestAreaDao implements IAreaDao {
+
+        @Override
+        public List<Province> loadAllProvinecs() {
+            Province shandong = new Province();
+            shandong.setId(1);
+            shandong.setProvinceName("山东");
+            shandong.setProvinceCode("0001");
+
+            Province shanxi = new Province();
+            shanxi.setId(2);
+            shanxi.setProvinceName("山西");
+            shanxi.setProvinceCode("0002");
+
+            Province hebei = new Province();
+            hebei.setId(3);
+            hebei.setProvinceName("河北");
+            hebei.setProvinceCode("0003");
+
+            Province henan = new Province();
+            henan.setId(4);
+            henan.setProvinceName("河南");
+            henan.setProvinceCode("0004");
+
+            List<Province> provinceList = new ArrayList<>();
+            provinceList.add(shandong);
+            provinceList.add(shanxi);
+            provinceList.add(hebei);
+            provinceList.add(henan);
+
+            return provinceList;
+        }
+
+        @Override
+        public List<City> loadAllCities() {
+            return null;
+        }
+
+        @Override
+        public List<County> loadAllCounties() {
+            return null;
+        }
     }
 
     public class MyTestGuiceModule extends AbstractModule {
         @Override
         protected void configure() {
-            bind(IChooseAreaActivityViewModel.class).to(MyTestViewModel.class);
+//            bind(IChooseAreaActivityViewModel.class).to(MyTestViewModel.class);
+            bind(IAreaDao.class).to(MyTestAreaDao.class);
         }
     }
 

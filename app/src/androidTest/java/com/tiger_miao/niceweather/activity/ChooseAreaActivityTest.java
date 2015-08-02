@@ -6,7 +6,10 @@ import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.tiger_miao.niceweather.R;
-import com.tiger_miao.niceweather.model.IChooseAreaActivityViewModel;
+import com.tiger_miao.niceweather.model.City;
+import com.tiger_miao.niceweather.model.County;
+import com.tiger_miao.niceweather.model.IAreaDao;
+import com.tiger_miao.niceweather.model.Province;
 
 import org.junit.After;
 import org.junit.Before;
@@ -64,24 +67,54 @@ public class ChooseAreaActivityTest extends ActivityInstrumentationTestCase2<Cho
 
     @Test
     public void testClickOnItem() {
-        onData(allOf(is(instanceOf(String.class)), is("北京"))).perform(click());
-        onView(withId(R.id.title_text)).check(matches(withText("北京")));
+        onData(allOf(is(instanceOf(String.class)), is("山东"))).perform(click());
+        onView(withId(R.id.title_text)).check(matches(withText("山东")));
 
-        onData(is("天津")).perform(click());
-        onView(withId(R.id.title_text)).check(matches(withText("天津")));
+        onData(is("山西")).perform(click());
+        onView(withId(R.id.title_text)).check(matches(withText("山西")));
     }
 
-    public static class MyTestViewModel implements IChooseAreaActivityViewModel {
+    public static class MyTestAreaDao implements IAreaDao {
+
         @Override
-        public List<String> getDataList() {
-            List<String> dataList = new ArrayList<>();
+        public List<Province> loadAllProvinecs() {
+            Province shandong = new Province();
+            shandong.setId(1);
+            shandong.setProvinceName("山东");
+            shandong.setProvinceCode("0001");
 
-            dataList.add("北京");
-            dataList.add("天津");
-            dataList.add("上海");
-            dataList.add("成都");
+            Province shanxi = new Province();
+            shanxi.setId(2);
+            shanxi.setProvinceName("山西");
+            shanxi.setProvinceCode("0002");
 
-            return dataList;
+            Province hebei = new Province();
+            hebei.setId(3);
+            hebei.setProvinceName("河北");
+            hebei.setProvinceCode("0003");
+
+            Province henan = new Province();
+            henan.setId(4);
+            henan.setProvinceName("河南");
+            henan.setProvinceCode("0004");
+
+            List<Province> provinceList = new ArrayList<>();
+            provinceList.add(shandong);
+            provinceList.add(shanxi);
+            provinceList.add(hebei);
+            provinceList.add(henan);
+
+            return provinceList;
+        }
+
+        @Override
+        public List<City> loadAllCities() {
+            return null;
+        }
+
+        @Override
+        public List<County> loadAllCounties() {
+            return null;
         }
     }
 
