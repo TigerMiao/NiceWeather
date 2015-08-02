@@ -13,7 +13,7 @@
             android:value="com.tiger_miao.niceweather.activity.GuiceModule"/>
 
         <activity
-            android:name=".activity.ChooseAreaActivity_"
+            android:name=".activity.ChooseAreaActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

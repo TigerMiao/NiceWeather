@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class AreaDao implements IAreaDao {
     @Override
-    public List<Province> loadAllProvinecs() {
+    public List<Province> loadAllProvinces() {
         List<Province> provinceList = new ArrayList<>();
 
         return provinceList;

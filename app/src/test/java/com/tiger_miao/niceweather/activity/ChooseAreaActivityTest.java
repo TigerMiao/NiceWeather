@@ -80,29 +80,10 @@ public class ChooseAreaActivityTest {
         RoboGuice.Util.reset();
     }
 
-    /*public static class MyTestViewModel implements IChooseAreaActivityViewModel {
-        @Override
-        public List<String> getDataList() {
-            List<String> dataList = new ArrayList<>();
-
-            dataList.add("北京");
-            dataList.add("天津");
-            dataList.add("上海");
-            dataList.add("成都");
-
-            return dataList;
-        }
-
-        @Override
-        public void setAreaType(int areaType) {
-
-        }
-    }*/
-
     public static class MyTestAreaDao implements IAreaDao {
 
         @Override
-        public List<Province> loadAllProvinecs() {
+        public List<Province> loadAllProvinces() {
             Province shandong = new Province();
             shandong.setId(1);
             shandong.setProvinceName("山东");
@@ -146,7 +127,6 @@ public class ChooseAreaActivityTest {
     public class MyTestGuiceModule extends AbstractModule {
         @Override
         protected void configure() {
-//            bind(IChooseAreaActivityViewModel.class).to(MyTestViewModel.class);
             bind(IAreaDao.class).to(MyTestAreaDao.class);
         }
     }

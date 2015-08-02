@@ -77,7 +77,7 @@ public class ChooseAreaActivityTest extends ActivityInstrumentationTestCase2<Cho
     public static class MyTestAreaDao implements IAreaDao {
 
         @Override
-        public List<Province> loadAllProvinecs() {
+        public List<Province> loadAllProvinces() {
             Province shandong = new Province();
             shandong.setId(1);
             shandong.setProvinceName("山东");

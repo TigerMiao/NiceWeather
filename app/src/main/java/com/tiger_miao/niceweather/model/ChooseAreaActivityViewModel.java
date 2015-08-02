@@ -25,7 +25,7 @@ public class ChooseAreaActivityViewModel implements IChooseAreaActivityViewModel
 
         switch (areaType) {
             case TYPE_PROVINCE:
-                for (Province province : areaDao.loadAllProvinecs()) {
+                for (Province province : areaDao.loadAllProvinces()) {
                     dataList.add(province.getProvinceName());
                 }
                 break;
